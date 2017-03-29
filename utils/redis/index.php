@@ -12,24 +12,24 @@ use Base\DB\RedisDb;
 
 class RedisUtil
 {
-    private static $_instance = null;
+    private $_redis = null;
 
-    private function __construct()
+    public function __construct($config = array('host' => '127.0.0.1', 'port' => 6379, 'db' => 0, 'auth' => null, 'pconnect' => false))
     {
-
+        $this->_redis = new RedisDb($config);
     }
 
-    private function __destruct()
+    public function ping()
     {
-
-    }
-
-    public static function getInstance()
-    {
-        if (self::$_instance == null) {
-            self::$_instance = new self();
+        if ($this->_redis) {
+            return $this->_redis->ping();
         }
-        return self::$_instance;
+        return false;
+    }
+
+    public function redis()
+    {
+        return $this->_redis;
     }
 
 }
