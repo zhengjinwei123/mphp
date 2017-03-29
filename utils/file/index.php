@@ -69,5 +69,13 @@ class FileUtil
         }
         return true;
     }
+
+    public static function remove($filePath)
+    {
+        if (!self::fileExists($filePath)) {
+            return false;
+        }
+        delete($filePath);
+    }
 }
 
