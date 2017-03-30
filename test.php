@@ -31,9 +31,11 @@ class Tester
 
         include_once "./Utils/File/index.php";
         foreach ($modules as $k => $v) {
-            $files = File\FileUtil::getInstance()->getFiles($v);
+            $files = File\FileUtil::getFiles($v);
             foreach ($files as $key => $value) {
-                include_once "$value";
+                if(File\FileUtil::get_extension($value) == "php"){
+                    include_once "$value";
+                }
             }
         }
     }
@@ -53,7 +55,7 @@ class Tester
 
     public function testFile()
     {
-        $files = File\FileUtil::getInstance()->getFiles(dirname(__FILE__));
+        $files = File\FileUtil::getFiles(dirname(__FILE__));
 
 //        foreach ($files as $k => $v) {
 //            if (File\FileUtil::getInstance()->isFile($v)) {
@@ -65,7 +67,7 @@ class Tester
 
 //        File\FileUtil::getInstance()->remove("C:/h.html");
 //        File\FileUtil::getInstance()->write("d:/h.html","<html>hehe</html>");
-        echo File\FileUtil::getInstance()->read("d:/h.html");
+        echo File\FileUtil::read("d:/h.html");
 //        var_dump($files);
     }
 
@@ -103,8 +105,8 @@ class Tester
     }
 
     public function testLog(){
-//        Log\LogUtil::set();
-//        Log\LogUtil::debug("zhengjinwei is handsome");
+        Log\LogUtil::set();
+        Log\LogUtil::debug("zhengjinwei is handsome");
     }
 }
 
@@ -113,4 +115,4 @@ class Tester
 //Tester::getInstance()->testRedis();
 //Tester::getInstance()->testMysql();
 
-//Tester::getInstance()->testLog();
+Tester::getInstance()->testLog();

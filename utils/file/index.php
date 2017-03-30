@@ -9,16 +9,6 @@ namespace Utils\File;
 
 class FileUtil
 {
-    private static $_instance = null;
-
-    public static function getInstance()
-    {
-        if (!(self::$_instance instanceof self)) {
-            self::$_instance = new self();
-        }
-        return self::$_instance;
-    }
-
     /**
      * 递归的获取某个目录指定的文件
      * @param $dir
@@ -75,6 +65,12 @@ class FileUtil
             return true;
         }
         return false;
+    }
+
+    public static function get_extension($file)
+    {
+        $info = pathinfo($file);
+        return $info['extension'];
     }
 
     public static function write($filePath, $content, $flag = FILE_APPEND)

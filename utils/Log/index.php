@@ -53,7 +53,7 @@ class LogUtil
         self::$daemonize = $daemonize;
         self::$logDir = $logDir;
 
-        if (!File\FileUtil::getInstance()->isDirectory(self::$logDir)) {
+        if (!File\FileUtil::isDirectory(self::$logDir)) {
             self::$logDir = dirname(__FILE__);
         }
     }
