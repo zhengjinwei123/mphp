@@ -10,6 +10,7 @@
 use Utils\File;
 use Utils\Redis;
 use Utils\Mysql;
+use Utils\Log;
 
 class Tester
 {
@@ -100,9 +101,16 @@ class Tester
 
         var_dump($result);
     }
+
+    public function testLog(){
+//        Log\LogUtil::set();
+//        Log\LogUtil::debug("zhengjinwei is handsome");
+    }
 }
 
-Tester::getInstance()->testFile();
+//Tester::getInstance()->testFile();
 
 //Tester::getInstance()->testRedis();
 //Tester::getInstance()->testMysql();
+
+//Tester::getInstance()->testLog();
