@@ -69,7 +69,7 @@ class CsvUtil
 
     public static function cache($temp = array())
     {
-        $str = File\FileUtil::phpArrayeval($temp);
+        $str = File\FileUtil::phpArrayEval($temp);
         $str = "<?PHP Return " . $str . ";";
         $str = File\FileUtil::stripWhitespace($str);
         File\FileUtil::write("./a.php", $str, null);

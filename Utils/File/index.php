@@ -110,7 +110,7 @@ class FileUtil
             $val = !is_array($val) && (!preg_match("/^\-?\d+$/", $val) || strlen($val) > 12 || substr($val, 0, 1)=='0') ? '\''.addcslashes($val, '\'\\').'\'' : $val;
 
             if(is_array($val)) {
-                $evaluate .= "{$comma}{$key} => " . self::phpArrayeval($val, $level + 1);
+                $evaluate .= "{$comma}{$key} => " . self::phpArrayEval($val, $level + 1);
             } else {
                 $evaluate .= "{$comma}{$key} => {$val}";
             }
