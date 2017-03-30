@@ -5,7 +5,7 @@
  * Date: 2017/3/29
  * Time: 12:07
  */
-namespace Utils\File;
+namespace MPHP\Utils\File;
 
 class FileUtil
 {

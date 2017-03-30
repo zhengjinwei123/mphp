@@ -5,7 +5,7 @@
  * Date: 2017/3/29
  * Time: 11:57
  */
-namespace Utils\Algorithm;
+namespace MPHP\Utils\Algorithm;
 
 class FormulaUtil
 {

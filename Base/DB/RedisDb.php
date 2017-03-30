@@ -6,7 +6,7 @@
  * Time: 13:32
  */
 
-namespace Base\DB;
+namespace MPHP\Base\DB;
 
 class RedisDb
 {

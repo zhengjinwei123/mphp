@@ -6,8 +6,8 @@
  * Time: 12:41
  */
 
-namespace Utils\Log;
-use Utils\File;
+namespace MPHP\Utils\Log;
+use MPHP\Utils\File;
 
 class LogUtil
 {

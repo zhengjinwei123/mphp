@@ -6,7 +6,7 @@
  * Time: 11:43
  */
 
-namespace Utils\Date;
+namespace MPHP\Utils\Date;
 
 class DateUtil
 {

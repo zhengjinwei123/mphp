@@ -5,7 +5,7 @@
  * Date: 2017/3/29
  * Time: 12:10
  */
-namespace Utils\Socket;
+namespace MPHP\Utils\Socket;
 
 class SocketUtil{
     // http请求函数

@@ -6,9 +6,9 @@
  * Time: 14:11
  */
 
-namespace Utils\Mysql;
+namespace MPHP\Utils\Mysql;
 
-use Base\DB\MysqliDb;
+use MPHP\Base\DB\MysqliDb;
 
 class MysqlUtil
 {

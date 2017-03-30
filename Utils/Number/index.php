@@ -5,7 +5,7 @@
  * Date: 2017/3/29
  * Time: 12:03
  */
-namespace Utils\Number;
+namespace MPHP\Utils\Number;
 
 class NumberUtil
 {

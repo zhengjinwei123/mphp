@@ -6,9 +6,9 @@
  * Time: 13:51
  */
 
-namespace Utils\Redis;
+namespace MPHP\Utils\Redis;
 
-use Base\DB\RedisDb;
+use MPHP\Base\DB\RedisDb;
 
 class RedisUtil
 {

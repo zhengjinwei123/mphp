@@ -6,7 +6,7 @@
  * Time: 12:38
  */
 
-namespace Utils\Exception;
+namespace MPHP\Utils\Exception;
 
 class ConfigException extends \Exception{
 

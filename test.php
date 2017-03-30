@@ -7,10 +7,10 @@
  * Time: 9:48
  */
 
-use Utils\File;
-use Utils\Redis;
-use Utils\Mysql;
-use Utils\Log;
+use  MPHP\Utils\File;
+use  MPHP\Utils\Redis;
+use  MPHP\Utils\Mysql;
+use  MPHP\Utils\Log;
 
 class Tester
 {
@@ -108,11 +108,16 @@ class Tester
         Log\LogUtil::set();
         Log\LogUtil::debug("zhengjinwei is handsome");
     }
+
+    public function testCsv(){
+//        File\Csv\CsvUtil::parse("./a.csv");
+    }
 }
 
 //Tester::getInstance()->testFile();
-
+//
 //Tester::getInstance()->testRedis();
 //Tester::getInstance()->testMysql();
-
-Tester::getInstance()->testLog();
+//
+//Tester::getInstance()->testLog();
+//Tester::getInstance()->testCsv();

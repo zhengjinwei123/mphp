@@ -13,7 +13,7 @@
  * @version   2.7-master
  */
 
-namespace Base\DB;
+namespace MPHP\Base\DB;
 
 class MysqliDb
 {
