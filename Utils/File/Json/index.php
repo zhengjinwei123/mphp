@@ -23,7 +23,7 @@ class JsonUtil
         $content = json_decode($content, JSON_UNESCAPED_UNICODE);
 
 
-        self::cache($jsonFilePath, $content);
+        return self::cache($jsonFilePath, $content);
     }
 
     public static function cache($csvFilePath, $temp = array())
@@ -34,5 +34,6 @@ class JsonUtil
         $phpFile = str_replace(".json", ".php", $csvFilePath);
 
         File\FileUtil::write($phpFile, $str, null);
+        return true;
     }
 }
