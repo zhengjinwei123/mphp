@@ -110,7 +110,7 @@ class Tester
     }
 
     public function testCsv(){
-//        File\Csv\CsvUtil::parse("./a.csv");
+        File\Csv\CsvUtil::writeCache("./a.csv");
     }
 }
 
@@ -120,4 +120,4 @@ class Tester
 //Tester::getInstance()->testMysql();
 //
 //Tester::getInstance()->testLog();
-//Tester::getInstance()->testCsv();
+Tester::getInstance()->testCsv();

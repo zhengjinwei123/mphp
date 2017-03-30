@@ -13,7 +13,7 @@ use MPHP\Utils\File;
 
 class CsvUtil
 {
-    public static function parse($csvFilePath, $key = null, $filter = null)
+    public static function writeCache($csvFilePath, $key = null, $filter = null)
     {
         $content = File\FileUtil::read($csvFilePath);
         if (empty($content)) {
@@ -64,14 +64,16 @@ class CsvUtil
             }
         }
 
-        self::cache($tmp);
+        self::cache($csvFilePath, $tmp);
     }
 
-    public static function cache($temp = array())
+    public static function cache($csvFilePath, $temp = array())
     {
         $str = File\FileUtil::phpArrayEval($temp);
         $str = "<?PHP Return " . $str . ";";
         $str = File\FileUtil::stripWhitespace($str);
-        File\FileUtil::write("./a.php", $str, null);
+        $phpFile = str_replace(".csv", ".php", $csvFilePath);
+
+        File\FileUtil::write($phpFile, $str, null);
     }
 }
