@@ -9,6 +9,16 @@ namespace Utils\File;
 
 class FileUtil
 {
+    private static $_instance = null;
+
+    public static function getInstance()
+    {
+        if (!(self::$_instance instanceof self)) {
+            self::$_instance = new self();
+        }
+        return self::$_instance;
+    }
+
     /**
      * 递归的获取某个目录指定的文件
      * @param $dir
