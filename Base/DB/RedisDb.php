@@ -419,6 +419,11 @@ class RedisDb
         return $this->getRedis()->zRangeByScore($key, $min, $max);
     }
 
+    public function zRevRange($key, $start, $end, $withScores)
+    {
+        return $this->getRedis()->zRevRange($key, $start, $end, $withScores);
+    }
+
     public function zRange($key, $min, $max)
     {
         return $this->getRedis()->zRange($key, $min, $max);
@@ -434,11 +439,46 @@ class RedisDb
         return $this->getRedis()->zCard($key);
     }
 
-    public function zCount($key,$start,$end)
+    public function zCount($key, $start, $end)
     {
-        return $this->getRedis()->zCount($key,$start,$end);
+        return $this->getRedis()->zCount($key, $start, $end);
     }
 
+    //集合
+    public function sAdd($key, $set)
+    {
+        $this->getRedis()->sAdd($key, $set);
+    }
+
+    //是否在指定集合内
+    public function sIsMember($key, $set)
+    {
+        return $this->getRedis()->sIsMember($key, $set);
+    }
+
+    //计算集合数量 sSize
+    public function sCard($key)
+    {
+        return $this->getRedis()->sCard($key);
+    }
+
+    //删除
+    public function sRem($key, $set)
+    {
+        $this->getRedis()->sRem($key, $set);
+    }
+
+    //将value元素从名称为srckey的集合移到名称为dstkey的集合
+    public function sMove($seckey, $dstkey, $value)
+    {
+        $this->getRedis()->sMove($seckey, $dstkey, $value);
+    }
+
+    //随机返回名称为key的set中一个元素，不删除
+    public function sRandMember($key)
+    {
+        return $this->getRedis()->sRandMember($key);
+    }
     /* =================== 以下私有方法 =================== */
 
     /**
@@ -478,5 +518,5 @@ class RedisDb
         $hash = ($h * 1) % $m;
         return $hash;
     }
-
+    //php api 参考:http://www.cnblogs.com/weafer/archive/2011/09/21/2184059.html
 }// End Class
