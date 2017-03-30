@@ -52,16 +52,19 @@ class Tester
 
     public function testFile()
     {
-        include "./Utils/File/index.php";
         $files = File\FileUtil::getInstance()->getFiles(dirname(__FILE__));
 
-        foreach ($files as $k => $v) {
-            if (File\FileUtil::getInstance()->isFile($v)) {
-                var_dump("1");
-            } else {
-                var_dump("2");
-            }
-        }
+//        foreach ($files as $k => $v) {
+//            if (File\FileUtil::getInstance()->isFile($v)) {
+//                var_dump("1");
+//            } else {
+//                var_dump("2");
+//            }
+//        }
+
+//        File\FileUtil::getInstance()->remove("C:/h.html");
+//        File\FileUtil::getInstance()->write("d:/h.html","<html>hehe</html>");
+        echo File\FileUtil::getInstance()->read("d:/h.html");
 //        var_dump($files);
     }
 
@@ -99,7 +102,7 @@ class Tester
     }
 }
 
-//Tester::getInstance()->testFile();
+Tester::getInstance()->testFile();
 
 //Tester::getInstance()->testRedis();
-Tester::getInstance()->testMysql();
+//Tester::getInstance()->testMysql();

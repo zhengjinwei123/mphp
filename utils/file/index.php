@@ -67,10 +67,20 @@ class FileUtil
         return file_get_contents($filePath);
     }
 
+    public static function createFile($filePath)
+    {
+        $handle = fopen($filePath, "w+");
+        if ($handle) {
+            fclose($handle);
+            return true;
+        }
+        return false;
+    }
+
     public static function write($filePath, $content, $flag = FILE_APPEND)
     {
         if (!self::fileExists($filePath)) {
-            return false;
+            self::createFile($filePath);
         }
         if ($flag == FILE_APPEND) {
             file_put_contents($filePath, $content, FILE_APPEND);
@@ -85,7 +95,7 @@ class FileUtil
         if (!self::fileExists($filePath)) {
             return false;
         }
-        delete($filePath);
+        unlink($filePath);
     }
 }
 
