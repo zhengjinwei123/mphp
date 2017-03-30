@@ -112,6 +112,9 @@ class Tester
     public function testCsv(){
         File\Csv\CsvUtil::writeCache("./a.csv");
     }
+    public function testJson(){
+        File\Json\JsonUtil::writeCache("./b.json");
+    }
 }
 
 //Tester::getInstance()->testFile();
@@ -120,4 +123,5 @@ class Tester
 //Tester::getInstance()->testMysql();
 //
 //Tester::getInstance()->testLog();
-Tester::getInstance()->testCsv();
+//Tester::getInstance()->testCsv();
+Tester::getInstance()->testJson();
