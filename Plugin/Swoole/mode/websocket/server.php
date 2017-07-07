@@ -7,7 +7,7 @@
  * Time: 13:39
  * swoole 实现websocket server
  */
-class JadeServer
+class SwooleServer
 {
     private $server = null;
     private $app = null;
@@ -21,8 +21,7 @@ class JadeServer
         $configFilePath = $configPath . DS . 'swoole.ini';
 
         if (!file_exists($configFilePath)) {
-            mkdir($configPath);
-            $cfg = include_once SWOOLE_ROOT_PATH . DS . "config/setting.php";
+            $cfg = include SWOOLE_ROOT_PATH . DS . "config" . DS . "setting.php";
             $setting = $cfg['setting'];
             // 生成ini配置文件
             $iniSettings = '[ws]' . PHP_EOL;
@@ -64,13 +63,13 @@ class JadeServer
     {
     }
 
-    public function run($host = '', $post = 0, $daemon = -1, $processName = '', $cnf = null, $baseDir = '')
+    public function run($host = '', $port = '', $daemon = -1, $processName = '', $cnf = null, $baseDir = '')
     {
         if ($host) {
             $this->setting['host'] = $host;
         }
-        if ($post) {
-            $this->setting['post'] = $post;
+        if ($port) {
+            $this->setting['port'] = intval($port);
         }
         if ($daemon >= 0) {
             $this->setting['daemonize'] = $daemon;
@@ -85,7 +84,7 @@ class JadeServer
             $this->setting['chroot'] = SWOOLE_ROOT_PATH . DS . $baseDir;
         }
 
-        $this->server = new swoole_websocket_server($this->server['host'], $this->server['port'], SWOOLE_PROCESS, SWOOLE_TCP6);
+        $this->server = new swoole_websocket_server($this->setting['host'], $this->setting['port'], SWOOLE_PROCESS, SWOOLE_TCP6);
 
         //设置启动参数
         $this->server->set($this->setting);
@@ -146,19 +145,25 @@ class JadeServer
     // swoole server master start
     public function onStart($server)
     {
-
+        //记录进程id,脚本实现自动重启
+        $pid = "{$server->master_pid}\n{$server->manager_pid}";
+        file_put_contents(SWOOLE_PID_PATH, $pid);
     }
 
     // swoole server master shutdown
     public function onShutdown()
     {
+        unlink(SWOOLE_PID_PATH);
 
+        echo date('Y-m-d H:i:s') . "Swoole server shutdown. \n";
     }
 
     // manager 进程启动
     public function onManagerStart($server)
     {
+        echo date('Y-m-d H:i:s') . "\t{$server->manager_pid}\tManager start. \n";
 
+        $this->setProcessName($server->setting['process_name'] . '-' . $this->setting['port'] . '-man');
     }
 
     // worker 进程启动

@@ -36,37 +36,35 @@ return array(
         'tcp_defer_accept' => 5,                                       //TCP连接延迟5秒或者有数据发送时才触发accept
         'log_level' => 3,                                       //范围是0-5,低于log_level设置的日志信息不会抛出0:DEBUG;1:TRACE;2:INFO;3:NOTICE;4:WARNING;5:ERROR
 
-        'tmp_dir' => SWOOLE_ROOT_PATH . DS . "/tmp",
-        'log_dir' => SWOOLE_ROOT_PATH . DS . "/tmp/log",
-        'task_tmpdir' => SWOOLE_ROOT_PATH . DS . "/tmp/task",           //task进程临时数据目录 投递数据超过8192字节将启用
-        'log_file' => SWOOLE_ROOT_PATH . DS . "/tmp/log/http.log",   //日志文件目录
+        'tmp_dir' => SWOOLE_ROOT_PATH . DS . "tmp",
+        'log_dir' => SWOOLE_ROOT_PATH . DS . "tmp" . DS . "log",
+        'task_tmpdir' => SWOOLE_ROOT_PATH . DS . "tmp" . DS . "task",           //task进程临时数据目录 投递数据超过8192字节将启用
+        'log_file' => SWOOLE_ROOT_PATH . DS . "tmp" . DS . "log" . DS . "http.log",   //日志文件目录
     ),
     "database" => array(
         "mysql" => array(
-            'host'          =>      '127.0.0.1',
-            'username'      =>      'root',
-            'password'      =>      '123456',
-            'db'            =>      'db_xxx',
-            'port'          =>      3306,
-            'prefix'        =>      't_',
-            'charset'       =>      'utf8',
-            'pingtime'      =>      300
+            'host' => '127.0.0.1',
+            'username' => 'root',
+            'password' => '123456',
+            'db' => 'db_xxx',
+            'port' => 3306,
+            'prefix' => 't_',
+            'charset' => 'utf8',
+            'pingtime' => 300
         ),
         "redis" => array(
-            'host'          =>      '127.0.0.1',
-            'port'          =>      6379,
-            'db'            =>      1,
-            'auth'          =>      null,
-            'pconnect'      =>      false,
-            'pingtime'      =>      300
+            'host' => '127.0.0.1',
+            'port' => 6379,
+            'db' => 1,
+            'auth' => null,
+            'pconnect' => false,
+            'pingtime' => 300
         ),
         "memcache" => array(
-            'host'          =>      '192.168.2.150',
-            'port'          =>      15000,
-            'pingtime'      =>      120
+            'host' => '192.168.2.150',
+            'port' => 15000,
+            'pingtime' => 120
         ),
-        "mongodb" => array(
-
-        )
+        "mongodb" => array()
     )
 );
