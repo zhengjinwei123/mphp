@@ -50,9 +50,20 @@ function arrayIndexByKey($key, $arr = array())
     return false;
 }
 
+function arrayKeyByIndex($index,$keys = array()){
+    $i = 0;
+    foreach($keys as $k=>$v){
+        if($index == $k){
+            return $v;
+        }
+        $i++;
+    }
+    throw new Exception("error:$index".json_encode($keys));
+}
+
 function arr2PhpString($arr)
 {
-    $json = json_encode($arr);
+    $json = json_encode($arr,true);
 
     $str = "<?php\r\n\treturn array";
     $temp = preg_replace('/{/', " ( ", $json);
@@ -134,7 +145,9 @@ function phpArrayeval($array, $level = 0)
     $comma = $space;
     foreach($array as $key => $val) {
         $key = is_string($key) ? '\''.addcslashes($key, '\'\\').'\'' : $key;
-        $val = !is_array($val) && (!preg_match("/^\-?\d+$/", $val) || strlen($val) > 12 || substr($val, 0, 1)=='0') ? '\''.addcslashes($val, '\'\\').'\'' : $val;
+//        $val = !is_array($val) && (!preg_match("/^\-?\d+$/", $val) || strlen($val) > 12 || substr($val, 0, 1)=='0') ? '\''.addcslashes($val, '\'\\').'\'' : $val;
+
+        $val = is_string($val) ? '\''.addcslashes($val, '\'\\').'\'' : $val;
 
         if(is_array($val)) {
             $evaluate .= "{$comma}{$key} => " . phpArrayeval($val, $level + 1);
